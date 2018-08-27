@@ -32,7 +32,7 @@ function onConnection(socket) {
 }
 ```
 
-Now you've restricted the usage of socket.io only on domain `https://domain.com:9001`.
+Now you've restricted the usage of socket.io only on domain `https://domain.com:3000`.
 
 ## How to arrange videos?
 
