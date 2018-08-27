@@ -2,8 +2,8 @@
 <div class="jumbotron">
   <h1>Video meeting</h1>
   <p class="lead">This app is for video meeting!</p>
-  {{#if user}}
-    <p>Welcome {{user}}!</p>
+  {{#if outlook_user}}
+    <p>Welcome {{outlook_user}}!</p>
   {{else}}
     <a class="btn btn-primary btn-large" href="{{signInUrl}}">Click here to login</a>
   {{/if}}

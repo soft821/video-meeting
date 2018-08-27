@@ -6,6 +6,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session  = require('express-session');
+var passport = require('passport');
+var flash    = require('connect-flash');
+
+require('./config/passport')(passport); // pass passport for configuration
+// routes ======================================================================
+
 require('dotenv').config();
 
 var index = require('./routes/index');
@@ -27,11 +34,22 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use(session({
+	secret: 'vidyapathaisalwaysrunning',
+	resave: true,
+	saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully config
+
+app.use('/outlook', index);
 app.use('/authorize', authorize);
 app.use('/mail', mail);
 app.use('/calendar', calendar);

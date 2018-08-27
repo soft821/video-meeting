@@ -10,7 +10,7 @@ router.get("/create",async function(req, res, next){
   let parms = { title: 'Calendar', active: { create_meeting: true } };
   const accessToken = await authHelper.getAccessToken(req.cookies, res);
   const userName = req.cookies.graph_user_name;
-  parms.user = userName;
+  parms.outlook_user = userName;
   res.render('createMeeting', parms);
 });
 
@@ -32,7 +32,7 @@ router.post('/store', async function(req, res, next) {
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
-    parms.user = userName;
+    parms.outlook_user = userName;
 
     // Set the API endpoint to use the v2.0 endpoint
     outlook.base.setApiEndpoint('https://outlook.office.com/api/v2.0');
