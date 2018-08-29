@@ -11,13 +11,14 @@ router.get('/', async function(req, res, next) {
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
-    parms.user = userName;
+
     parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
   } else {
     parms.signInUrl = authHelper.getAuthUrl();
     parms.debug = parms.signInUrl;
   }
   parms.currentUser = req.session.user;
+
   res.render('index', parms);
 });
 

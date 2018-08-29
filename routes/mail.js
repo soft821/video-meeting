@@ -5,14 +5,14 @@ var authHelper = require('../helpers/auth');
 var graph = require('@microsoft/microsoft-graph-client');
 
 /* GET /mail */
-router.get('/', async function(req, res, next) {
+router.get('/', isLoggedIn, async function(req, res, next) {
   let parms = { title: 'Inbox', active: { inbox: true } };
 
   const accessToken = await authHelper.getAccessToken(req.cookies, res);
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
-    parms.user = userName;
+    parms.outlook_user = userName;
 
     // Initialize Graph client
     const client = graph.Client.init({
@@ -41,8 +41,18 @@ router.get('/', async function(req, res, next) {
     
   } else {
     // Redirect to home
-    res.redirect('/');
+    res.redirect('/outlook');
   }
 });
+
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next();
+
+  // if they aren't redirect them to the home page
+  res.redirect('/');
+}
 
 module.exports = router;

@@ -3,16 +3,22 @@ var express = require('express');
 var router = express.Router();
 var authHelper = require('../helpers/auth');
 var graph = require('@microsoft/microsoft-graph-client');
+var request = require('request');
+var outlook = require('node-outlook');
 
 router.get("/create",async function(req, res, next){
   let parms = { title: 'Calendar', active: { create_meeting: true } };
   const accessToken = await authHelper.getAccessToken(req.cookies, res);
   const userName = req.cookies.graph_user_name;
-  parms.user = userName;
+  parms.outlook_user = userName;
   res.render('createMeeting', parms);
 });
+
+
+
+
 /* POST /event schedule */
-router.post('/store', async function(req, res, next) {
+router.post('/store', isLoggedIn, async function(req, res, next) {
   let parms = { title: 'Calendar', active: { calendar: true } };
   var subject = req.body.subject;
   var body = req.body.description;
@@ -26,42 +32,65 @@ router.post('/store', async function(req, res, next) {
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
-    parms.user = userName;
+    parms.outlook_user = userName;
 
-    // Initialize Graph client
-    const client = graph.Client.init({
-      authProvider: (done) => {
-        done(null, accessToken);
-      }
-    });
+    // Set the API endpoint to use the v2.0 endpoint
+    outlook.base.setApiEndpoint('https://outlook.office.com/api/v2.0');
 
-    // Set start of the calendar view to today at midnight
-    const start = new Date(new Date().setHours(0,0,0));
-    // Set end of the calendar view to 7 days from start
-    const end = new Date(new Date(start).setDate(start.getDate() + 7));
-    
-    try {
-      // Get the first 10 events for the coming week
-      const result = await client
-      .api(`/me/calendarView?startDateTime=${start.toISOString()}&endDateTime=${end.toISOString()}`)
-      .top(10)
-      .select('subject,start,end,attendees')
-      .orderby('start/dateTime DESC')
-      .get();
+    var newEvent = {
+      "Subject": "Discuss the Calendar REST API",
+      "Body": {
+        "ContentType": "HTML",
+        "Content": "I think it will meet our requirements!"
+      },
+      "Start": {
+        "DateTime": "2019-09-03T18:00:00",
+        "TimeZone": "Eastern Standard Time"
+      },
+      "End": {
+        "DateTime": "2019-09-03T19:00:00",
+        "TimeZone": "Eastern Standard Time"
+      },
+      "Attendees": [
+        {
+          "EmailAddress": {
+            "Address": "allieb@contoso.com",
+            "Name": "Allie Bellew"
+          },
+          "Type": "Required"
+        }
+      ]
+    };
 
-      parms.events = result.value;
-      res.render('calendar', parms);
-    } catch (err) {
-      parms.message = 'Error retrieving events';
-      parms.error = { status: `${err.code}: ${err.message}` };
-      parms.debug = JSON.stringify(err.body, null, 2);
-      res.render('error', parms);
-    }
+    // Pass the user's email address
+    var userInfo = {
+      email: 'soft821@outlook.com'
+    };
+
+    outlook.calendar.createEvent({token: accessToken, event: newEvent, user: userInfo},
+      function(error, result){
+        if (error) {
+          console.log('createEvent returned an error: ' + error);
+        }
+        else if (result) {
+          console.log(JSON.stringify(result, null, 2));
+        }
+      });
     
   } else {
     // Redirect to home
-    res.redirect('/');
+    res.redirect('/outlook');
   }
 });
+
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next();
+
+  // if they aren't redirect them to the home page
+  res.redirect('/');
+}
 
 module.exports = router;
