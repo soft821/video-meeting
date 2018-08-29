@@ -1,0 +1,336 @@
+@media (min-width: 1500px){
+	.container {
+	    max-width: 1400px;
+	}
+}
+
+.nav-menu li.active>a {
+	color: #8490ff ;
+}
+
+/* Main Video Meeting Room */
+.meeting-room {
+	background: #222221;
+}
+/* without chat room -- start */
+.meeting-room #video-room {
+	position: fixed;
+	width: 100%;
+	/*height: calc(100% - 70px);*/
+	height: 100%;
+	transition: 0.5s;
+}
+
+.meeting-room #chat-room {
+	background: #ffffff;
+	position: fixed;
+	width: 350px;
+	height: calc(100% - 70px);
+	/*height: 100%;*/
+	right: -350px;
+	/*right: 0px;*/
+	transition: 0.5s;
+}
+/* without chat room -- end */
+#joined-video-container {
+	position: absolute;
+	bottom: 70px;
+	background: #222221;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.meeting-room #control-bar {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 70px;
+	background-image: linear-gradient(#5a5a5a, #3a3a3a, #5a5a5a);
+	display: inline-block;
+	opacity: 1;
+	/*transition: 0.7s*/
+}
+
+.meeting-room #cover-img {
+	position: absolute;
+	text-align: center;
+	bottom: calc(50% - 15px);
+	left: calc(50% - 75px);
+}
+
+.meeting-room #loading {
+	position: absolute;
+	text-align: center;
+	bottom: calc(50% - 60px);
+	left: calc(50% - 60px);
+}
+
+*.hidden {
+	display: none;
+}
+
+/* with chat room -- start */
+.meeting-room.open-chat #video-room {
+	position: fixed;
+	width: calc(100% - 350px);
+	/*height: calc(100% - 70px);*/
+	height: 100%;
+}
+
+.meeting-room.open-chat #loading {
+	position: absolute;
+	text-align: center;
+	bottom: calc(50% - 60px);
+	left: calc(50% - 60px);
+}
+
+.meeting-room.open-chat #chat-room {
+	background: #ffffff;
+	position: fixed;
+	width: 350px;
+	height: calc(100% - 70px);
+	/*height: 100%;*/
+	right: 0px;
+}
+
+/*.meeting-room.open-chat #control-bar {
+	position: fixed;
+	bottom: 0px;
+	width: calc(100% - 350px);
+	height: 70px;
+	background-image: linear-gradient(#5a5a5a, #3a3a3a, #5a5a5a);
+	display: inline-block;
+	opacity: 1;
+	transition: 0.7s
+}*/
+/* with chat room -- end */
+
+#control-bar:hover {
+	opacity: 1;
+}
+
+#ctrl-logo {
+	position: relative;
+	width: 150px;
+	padding: 10px;
+	display: inline-block;
+}
+
+#ctrl-container {
+	position: absolute;
+	width: calc(100% - 150px);
+	height: 100%;	
+	display: inline-block;
+}
+
+#ctrl-container ul {
+	display: inline-block;
+	height: 100%;
+}
+
+#ctrl-container ul li {
+	display: inline-block;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	padding: 15px 15px;
+	color: #ffffff;
+	text-align: center;
+}
+
+#ctrl-container ul li:hover {
+	background-image: linear-gradient(#7a7a7a, #5a5a5a, #7a7a7a);
+}
+
+#ctrl-container ul li:active {
+	transform: scale(0.9, 0.9);
+	background-image: linear-gradient(#7a7a7a, #5a5a5a, #7a7a7a);
+}
+
+.ctrl-icon {
+	width: 25px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ctrl-title {
+	display: block;
+}
+
+.permission-wrapper {
+
+}
+
+.main-wrapper {
+	margin-left: 20%;	
+	margin-right: auto;
+}
+
+.exit-wrapper li {
+	padding: 25px 15px 0 15px !important;
+	color: #d34439 !important;
+	font-size: 15px !important;
+	font-weight: bold !important;
+}
+
+#video-container {
+	width: 100%;
+	height: calc(100% - 276px);
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#video-me {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	top: 0px;
+	left: 0px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#video-me video {
+	border: solid 2px #ffffff;
+}
+
+#video-focus {
+	height: 100%;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 10px;
+	margin-top: 10px;
+}
+
+video {
+	width: 100%;
+	height: 100%;
+	border: solid 1px black;
+}
+
+#chat-room .chat-form-group {
+	position: absolute;
+	background: #ffffff;
+	bottom: 0px;
+	width: 100%;
+	height: 50px;
+	/*min-height: 100px;*/
+	max-height: 200px;
+	border-top: solid 1px #e6e6e6;
+	padding: 10px 0px;
+}
+
+#share-file {
+	display: inline-block;
+}
+
+#btn-send-chat {
+	display: inline-block;
+}
+
+#share-file {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	left: 5px;
+	top: 1px;
+}
+
+#input-text-chat {
+	position: relative;
+	display: inline-block;
+	max-height: 150px;
+	min-height: 30px;
+	height: 30px;
+	width: 260px;
+}
+
+#btn-send-chat {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	left: -4px;
+	top: 1px;
+}
+
+/* Message In/Out Box */
+.chat-header {
+	width: 100%;
+	height: 90px;
+	border-bottom: dotted 1px #e6e6e6;
+}
+.chat-output {
+	width: 100%;
+	height: calc(100% - 140px);
+	overflow-y: scroll;
+}
+.out-msg, .in-msg {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	border-bottom: dotted 1px #e6e6e6;
+}
+
+.out-msg .user-info, .out-msg .user-info .user-avatar {
+	float: right;
+}
+.out-msg {
+	/*margin-top: -15px;*/
+}
+
+.out-msg .msg {
+	position: relative;
+	display: block;
+	background-color: rgba(40, 170, 225, 0.2);
+	padding: 7px;
+	width: calc(100% - 70px);
+	margin-right: 50px;
+	margin-left: 20px;
+	top: 20px;
+	border-radius: 7px;
+	margin-bottom: 30px;
+}
+
+.in-msg .msg {
+	position: relative;
+	display: block;
+	background-color: rgba(40, 170, 225, 0.2);
+	padding: 7px;
+	width: calc(100% - 70px);
+	margin-left: 50px;
+	top: -15px;
+	border-radius: 7px;
+}
+
+.user-info {
+	position: relative;
+	display: block;
+	padding: 5px;
+}
+
+.user-avatar {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+}
+
+.user-name {
+	position: relative;
+	display: inline-block;
+	top: -5px;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+.owl-item {
+	padding: 10px;
+}
+/* ./Message In/Out Box */
+
+/* ./Main Video Meeting Room */

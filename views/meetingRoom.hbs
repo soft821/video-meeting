@@ -1,0 +1,81 @@
+<!-- Main Video Meeting Room -->
+<!-- main video room -->
+<div id="video-room">
+	<!-- meeting room cover image -->
+	<div id="cover-img" class="">
+		<img width="150" src="images/logo.png">
+	</div>
+	<!-- ./meeting room cover image -->
+
+	<!-- waiting for join overlay -->
+	<div id="loading" class="hidden">
+		<img src="images/loading/spin.gif">
+	</div>
+	<!-- ./waiting for join overlay -->
+
+	<!-- video container -->
+	<div id="video-container">
+		<div id="video-me"></div>
+		<div id="video-focus"></div>
+	</div>
+	<div id="joined-video-container" class="owl-carousel owl-theme">
+        
+	</div>	
+	<!-- ./video container -->
+
+	<!-- controlbar for meeting -->
+	<div id="control-bar" class="pull-right">
+	    <div id="ctrl-logo">
+	        <a><img src="assets/img/logo.png" height="80" alt="" title="" /></a>
+	    </div>
+	    <div id="ctrl-container">
+	        <ul class="permission-wrapper">
+	        	<li id="btn-mute" class="on"><img class="ctrl-icon" src="images/icons/mic-on.png" /><a class="ctrl-title">Stop Audio</a></li>
+	        	<li id="btn-vstop" class="on"><img class="ctrl-icon" src="images/icons/camera-on.png" /><a class="ctrl-title">Stop Video</a></li>
+	        </ul>
+	        <ul class="main-wrapper">
+	        	<li id="btn-invite"><img class="ctrl-icon" src="images/icons/invite-user-white.png" /><a class="ctrl-title">Invite</a></li>
+	        	<li id="btn-mana"><img class="ctrl-icon" src="images/icons/manage-user-white.png" /><a class="ctrl-title">Manage Participants</a></li>
+	        	<li id="btn-share"><img class="ctrl-icon" src="images/icons/screen-share.png" /><a class="ctrl-title">Share</a></li>
+	        	<li id="btn-chat"><img class="ctrl-icon" src="images/icons/chat-white.png" /><a class="ctrl-title">Chat</a></li>
+	        	<li id="btn-rec"><img class="ctrl-icon" src="images/icons/rec-white.png" /><a class="ctrl-title">Rec</a></li>
+	        </ul>
+	        <ul class="exit-wrapper pull-right">
+	        	<li id="btn-end-meeting"><a>End Meeting</a></li>
+	        </ul>
+	    </div>
+  	</div>
+  	<!-- ./controlbar for meeting -->
+</div>
+<!-- ./main video room -->
+<!-- chat sidebar -->
+<div id="chat-room">
+	<div class="chat-header">
+		<input type="text" id="room-id" value="abcdef">
+		<button id="open-room">Open Room</button>
+		<button id="join-room">Join Room</button>
+		<button id="open-or-join-room">Auto Open Or Join Room</button>
+	</div>
+	<!-- <div id="chat-container">
+	    <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
+	    <button id="share-file" disabled>Share File</button>
+	    <br>
+	    <div id="file-container"></div>
+	    <div class="chat-output"></div>
+	</div> -->
+	<!-- chat output field -->
+	<div class="chat-output">
+		
+	</div>
+	<!-- ./chat output field -->
+	<!-- chat input field -->
+	<div class="chat-form-group">
+		<button id="share-file"><i class="fa fa-file-image-o"></i></button>
+	    <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
+		<!-- <textarea id="input-text-chat"></textarea> -->
+		<button id="btn-send-chat"><i class="fa fa-send-o"></i></button>
+	</div>
+	<!-- ./chat input field -->
+</div>
+<!-- ./chat sidebar -->
+<!-- ./Main Video Meeting Room -->

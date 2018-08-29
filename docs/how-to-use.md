@@ -42,7 +42,7 @@ You can use custom ports either via `config.json` file:
 
 ```json
 {
-  "socketURL": "https://yourdomain.com:9001/",
+  "socketURL": "https://yourdomain.com:3000/",
   "socketMessageEvent": "RTCMultiConnection-Message"
 }
 ```
@@ -50,7 +50,7 @@ You can use custom ports either via `config.json` file:
 Or simply override in your HTML code:
 
 ```javascript
-connection.socketURL = 'https://yourdomain.com:9001/';
+connection.socketURL = 'https://yourdomain.com:3000/';
 
 // if your server is already having "message" event
 // then you can use something else, unique.

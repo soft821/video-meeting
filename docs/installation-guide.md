@@ -40,7 +40,7 @@ bower install rtcmulticonnection
 node server.js
 ```
 
-Now open `http://localhost:9001/`.
+Now open `http://localhost:3000/`.
 
 # Modify config.json
 
@@ -65,13 +65,13 @@ Now run `server.js` and it will automatically use above configuration.
 
 # How to check if server is running correctly?
 
-Open this URL: `https://localhost:9001/socket.io/socket.io.js`
+Open this URL: `https://localhost:3000/socket.io/socket.io.js`
 
 If you can load `/socket.io/socket.io.js` on your server then it is working fine.
 
 # Stop Old Processes
 
-Check all processes running on port `9001` and stop process by `id`:
+Check all processes running on port `3000` and stop process by `id`:
 
 ```sh
 lsof -n -i4TCP:9001 | grep LISTEN
@@ -81,10 +81,10 @@ kill process-ID
 Or stop all processes on a specific port. (It may require `sudo` privileges):
 
 ```sh
-fuser -vk 9001/tcp
+fuser -vk 3000/tcp
 ```
 
-Now open: `http://localhost:9001/`
+Now open: `http://localhost:3000/`
 
 ## Keep running server in background
 

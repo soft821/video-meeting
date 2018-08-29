@@ -626,7 +626,7 @@ connection.socketOptions.resource = 'custom';
 connection.socketOptions.transport = 'polling';
 connection.socketOptions['try multiple transports'] = false;
 connection.socketOptions.secure = true;
-connection.socketOptions.port = '9001';
+connection.socketOptions.port = '3000';
 connection.socketOptions['max reconnection attempts'] = 100;
 // etc.
 ```
