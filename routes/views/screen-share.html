@@ -84,7 +84,7 @@
         <script src="https://cdn.webrtc-experiment.com/getMediaElement.js"></script>
 
         <!-- socket.io for signaling -->
-        <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+        <script src="./socket/socket.io.js"></script>
         
         <!-- capture screen from any HTTPs domain! -->
         <script src="https://cdn.webrtc-experiment.com:443/getScreenId.js"></script>
@@ -143,7 +143,9 @@
             };
 
             // by default, socket.io server is assumed to be deployed on your own URL
-            connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+            // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+            connection.socketURL = 'https://sleepy-tundra-93052.herokuapp.com/';
+
 
             // comment-out below line if you do not have your own socket.io server
             // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';

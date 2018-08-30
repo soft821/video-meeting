@@ -33,6 +33,7 @@ var app = express();
 // Set public folder as root
 app.use(express.static(path.join(__dirname, '/public')));
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view options', { layout : 'layout/main' });
